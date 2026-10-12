@@ -99,4 +99,14 @@ function showDetails(id){const k=kittens.find(x=>x.id===id);if(!k)return;documen
 function setLang(lang){language=lang;document.documentElement.lang=lang;document.getElementById("bnBtn").classList.toggle("active",lang==="bn");document.getElementById("enBtn").classList.toggle("active",lang==="en");document.querySelectorAll("[data-bn][data-en]").forEach(el=>{const value=el.dataset[lang];if(value!==undefined){if(el.tagName==="INPUT")el.placeholder=value;else if(el.tagName==="OPTION")el.textContent=value;else el.textContent=value;}});document.getElementById("searchInput").placeholder=t("নাম, রং বা ID দিয়ে খুঁজুন…","Search by name, colour or ID…");const status=document.getElementById("statusFilter");status.options[0].text=t("সব স্ট্যাটাস","All statuses");status.options[1].text=t("উপলভ্য","Available");status.options[2].text=t("রিজার্ভড","Reserved");const sort=document.getElementById("sortFilter");sort.options[0].text=t("ডিফল্ট সাজানো","Default order");sort.options[1].text=t("দাম: কম থেকে বেশি","Price: low to high");sort.options[2].text=t("দাম: বেশি থেকে কম","Price: high to low");renderCats();}
 document.getElementById("searchInput").addEventListener("input",renderCats);document.getElementById("statusFilter").addEventListener("change",renderCats);document.getElementById("sortFilter").addEventListener("change",renderCats);document.getElementById("year").textContent=new Date().getFullYear();bindMessenger();renderCats();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://oetihqrxuskeqqtczbai.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Ox5cUI9Pc_jFYGNKTSafPA_F6mh7OgG";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
 </body></html>
